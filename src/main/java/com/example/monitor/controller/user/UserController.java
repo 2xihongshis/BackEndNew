@@ -30,22 +30,15 @@ public class UserController {
 //        return userService.findAll();
     }
 
-//    @GetMapping("/user/add/{kind}/{type}/{error_type}/{url}/{message}/{filename}/{position}/{stack}/{selector}/")
-//    @PostMapping("/user/login/")
+
     @RequestMapping(value="/post/jserror/",method=POST)
     @ResponseBody
-//    public String addUser(
-//    public Map<String,String> addUser(HttpServletRequest request){
-//    public String addUser(@RequestBody String requestBody){
+
         public String addUser(@RequestBody String request) throws JsonProcessingException {
-//            System.out.println(request["kind"]);
             System.out.println(request.getClass().toString());
-//            System.out.println(map.get("kind"));
-            System.out.println("fuck");
             ObjectMapper mapper = new ObjectMapper();
             Map<String, String> map = mapper.readValue(request, Map.class);
             System.out.println(map.get("filename"));
-            System.out.println("fuck2");
 
             String url = map.get("url");
             String timestamp = map.get("timestamp");
@@ -57,10 +50,8 @@ public class UserController {
             String stack = map.get("stack");
             String selector = map.get("selector");//request.getParameter("selector");
 
-//        HashMap<String, String> map = new HashMap<>();
             js_error user = new js_error(url,timestamp,browser,message,filename,position,stack,selector);
             js_errorMapper.insert(user);
-//        map.put("result","100");
         return request;
     }
 

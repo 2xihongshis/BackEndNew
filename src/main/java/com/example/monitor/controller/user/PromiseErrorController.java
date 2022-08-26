@@ -27,7 +27,6 @@ public class PromiseErrorController {
         return promiseerrorMapper.selectList(null);
     }
 
-
     @RequestMapping(value="/upload/promiseerror/",method=POST)
     @ResponseBody
     public String addUser(@RequestBody String request) throws JsonProcessingException {
